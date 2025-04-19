@@ -10,13 +10,11 @@
 <form method="POST" action="{{ route('fazer.login') }}">
     @csrf
     <div>
-        <label for="cpf">CPF</label>
-        <input id="cpf" type="text" name="cpf" required autofocus>
+        <x-input label="CPF" name="cpf" required="true" placeholder="Digite o CPF" />
     </div>
 
     <div>
-        <label for="senha">Senha</label>
-        <input id="senha" type="password" name="senha" required>
+        <x-input label="Senha" name="senha" type="password" required="true" placeholder="Senha" />
     </div>
 
     <button type="submit">Entrar</button>

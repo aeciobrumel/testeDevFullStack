@@ -14,18 +14,27 @@
 @if(Auth::user()->permissao !== 'leitor')
 <form method="POST" action="{{ route('registrar.usuario') }}">
     @csrf
-    <input type="text" name="nome" placeholder="Nome" required>
-    <input type="text" name="cpf" placeholder="CPF" required>
-    <input type="email" name="email" placeholder="Email">
-    <input type="password" name="senha" placeholder="Senha" required>
-    <select name="permissao" required>
-        <option value="admin">Admin</option>
-        <option value="moderador">Moderador</option>
-        <option value="leitor">Leitor</option>
-    </select>
+    <x-input label="Nome" name="nome" required="true" placeholder="Nome completo" />
+    <x-input label="CPF" name="cpf" required="true" placeholder="Digite o CPF" />
+    <x-input label="Email" name="email" placeholder="Email" />
+    <x-input label="Senha" name="senha" type="password" required="true" placeholder="Senha" />
+    
+        <!-- Campo de permissão -->
+        <div>
+        <label for="permissao">Permissão</label>
+        <select name="permissao" required class="form-control">
+            <option value="admin">Admin</option>
+            <option value="moderador">Moderador</option>
+            <option value="leitor">Leitor</option>
+        </select>
+    </div>
+
     <button type="submit">Cadastrar</button>
 </form>
 @endif
+
+
+
 <hr>
 
 <table border="1">
