@@ -1,0 +1,8 @@
+   INFO  Application ready in [meu-app]. You can start your local development using:
+
+➜ cd meu-app
+➜ composer run dev
+
+  New to Laravel? Check out our documentation. Build something amazing!
+
+
