@@ -8,51 +8,39 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
-    
-
-
-    public function initIndexView()
-    {
-        return view('welcomeView');
-
-    }
-
-    ////////////////////////////////////////////////////////// inicia view login
     public function initLoginView(){
         
     // Verificar se o usuário já está logado
     if (Auth::check()) {
     // Se já estiver logado, redirecionar para a página de cadastro
-    return redirect()->route('cadastro_page');
+    return redirect()->route('listar_page');
     }
 
     // Caso contrário, exibir a página de login
     return view('loginView');
      }
-
-////////////////////////////////////////////////////////////////////////////////
-//faz o login
-     public function fazerLogin(Request $request)
-     {
-         $request->validate([
-             'cpf' => 'required',
-             'senha' => 'required',
-         ]);
-     
-         $user = User::where('cpf', $request->cpf)->first();
-     
-         if ($user && Hash::check($request->senha, $user->senha)) {
-             Auth::login($user);
-             return redirect()->route('cadastro_page');
-         }
-     
-         return back()->withErrors(['cpf' => 'CPF ou senha inválidos.'])->withInput();
-     }
-     
-
-
 ////////////////////////////////////////////////////////////////////////////////////
-// faz o logout do usuário
+//Login e logout
+
+
+
+public function fazerLogin(Request $request)
+{
+    $request->validate([
+        'cpf' => 'required',
+        'senha' => 'required',
+    ]);
+
+    $user = User::where('cpf', $request->cpf)->first();
+
+    if ($user && Hash::check($request->senha, $user->senha)) {
+        Auth::login($user);
+        return redirect()->route('listar_page')->with('success', 'Login realizado com sucesso.');
+    }
+
+    return back()->withErrors(['cpf' => 'CPF ou senha inválidos.'])->withInput();
+}
+
 public function logout()
 {
     Auth::logout(); // Desloga o usuário
@@ -60,20 +48,32 @@ public function logout()
 }
 
 
-///////////////////////////////////////////////////////////////////////
+
+
+public function initCadastrarUsuarioView()
+{
+    return view('cadastrarUsuarioView');
+}
 
 
 
 
 
-    public function initCadastroView()
-    {
-        $usuarios = User::all();  // Retorna uma coleção de objetos
-        return view('cadastroView', compact('usuarios'));
-    }
-    
-/////////////////////////////////////////////////////////////////////// REGISTRAR USUARIO
-    public function registrarUsuario(Request $request)
+
+
+/////////////////////////////////////////////////////////////////////
+/// Inicializa listar view
+public function initListarView()
+{
+    $usuarios = User::all();  // Retorna uma coleção de objetos
+    return view('listarView', compact('usuarios'));
+}
+
+
+////////////////////////     CRUD         /////////////////////////// 
+//criar o usuario
+
+public function registrarUsuario(Request $request)
 {
     $request->validate([
         'nome' => 'required',
@@ -91,14 +91,11 @@ public function logout()
         'permissao' => $request->permissao,
     ]);
 
-    return redirect()->route('cadastro_page')->with('success', 'Usuário cadastrado com sucesso!');
+    return redirect()->route('listar_page')->with('success', 'Usuário cadastrado com sucesso!');
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //editar o usuario
-
-
-
 
 public function editarUsuario($id)
 {
@@ -132,25 +129,22 @@ public function atualizarUsuario(Request $request, $id)
         'permissao' => $request->permissao,
     ]);
 
-    return redirect()->route('cadastro_page')->with('success', 'Usuário atualizado com sucesso.');
+    return redirect()->route('listar_page')->with('success', 'Usuário atualizado com sucesso.');
 }
 
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Excluir o usuário
+// excluir o usuário
 public function excluirUsuario($id)
 {
     $usuario = User::findOrFail($id);
 
     // Apenas admin pode excluir
     if (Auth::user()->permissao !== 'admin') {
-        return redirect()->route('cadastro_page')->with('error', 'Permissão negada.');
+        return redirect()->route('listar_page')->with('error', 'Permissão negada.');
     }
 
     $usuario->delete();
 
-    return redirect()->route('cadastro_page')->with('success', 'Usuário excluído com sucesso.');
+    return redirect()->route('listar_page')->with('success', 'Usuário excluído com sucesso.');
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
 }

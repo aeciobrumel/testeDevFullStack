@@ -3,31 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     <title>
         
     @yield('title', 'Aplicação de Login')
     </title>
+    
 </head>
 <body>
     <header>
-        <h1>Aplicação de login</h1>
-        @if(Auth::check())
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
-@endif
+    @csrf
+    
+            <div id="react-header"
+                data-props='@json([
+                    "isAuthenticated" => Auth::check(),
+                    "logoutUrl" => route("logout"),
+                    "csrfToken" => csrf_token()
+                ])'>
+            </div>
+
+
 
     </header>
-    <hr/>
-    <main>
+    <main style="flex:1 ; display:flex;  flex-direction:column;">
         @yield('content')
     </main>
-         <hr/>
-    <footer>
-        <p>&copy; 2025 Desenvolvido por Brumel</p>
-    </footer>    
+         <div id="footer-react"></div>
 
+
+    @viteReactRefresh
+@vite(['resources/js/app.jsx'])
 
 
 </body>
