@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { User, PencilSimple, Trash } from "phosphor-react";
 
 const UserCard = ({ user, canEdit, canDelete }) => {
     const [dropdownOpen, setDropdownOpen] = useState(null);
@@ -49,11 +50,10 @@ const UserCard = ({ user, canEdit, canDelete }) => {
                         justifyContent: "center",
                         alignItems: "center",
                         color: "white",
-                        fontSize: 20,
                         marginRight: 10,
                     }}
                 >
-                    s
+                    <User size={32} />
                 </div>
                 <div>
                     <div style={{ fontSize: 13, color: "#666" }}>
@@ -100,14 +100,17 @@ const UserCard = ({ user, canEdit, canDelete }) => {
                             <a
                                 href={`/usuario/${user.id}/editar`}
                                 style={{
-                                    display: "block",
-                                    padding: "8px 12px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "8px",
+                                    padding: "6px 12px",
+                                    background: "none",
                                     color: "#4b7bec",
                                     textDecoration: "none",
                                     borderBottom: "1px solid #eee",
                                 }}
                             >
-                                ✏️ Editar
+                                <PencilSimple size={16} /> Editar
                             </a>
                         )}
                         {canDelete && (
@@ -141,9 +144,11 @@ const UserCard = ({ user, canEdit, canDelete }) => {
                                 <button
                                     type="submit"
                                     style={{
-                                        display: "block",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "8px",
                                         width: "100%",
-                                        padding: "8px 12px",
+                                        padding: "6px 12px",
                                         background: "none",
                                         border: "none",
                                         color: "#eb3b5a",
@@ -151,7 +156,7 @@ const UserCard = ({ user, canEdit, canDelete }) => {
                                         cursor: "pointer",
                                     }}
                                 >
-                                    🗑️ Excluir
+                                    <Trash size={16} /> Excluir
                                 </button>
                             </form>
                         )}

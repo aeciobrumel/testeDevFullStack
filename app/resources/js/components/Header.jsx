@@ -1,5 +1,6 @@
 // resources/js/components/Header.jsx
 import React from "react";
+import { SignOut } from "phosphor-react";
 
 const Header = ({ isAuthenticated, logoutUrl, csrfToken }) => {
     return (
@@ -11,7 +12,7 @@ const Header = ({ isAuthenticated, logoutUrl, csrfToken }) => {
                     <form method="POST" action={logoutUrl}>
                         <input type="hidden" name="_token" value={csrfToken} />
                         <button type="submit" style={styles.button}>
-                            Logout
+                            Sair <SignOut size={18} />
                         </button>
                     </form>
                 )}
@@ -22,10 +23,9 @@ const Header = ({ isAuthenticated, logoutUrl, csrfToken }) => {
 
 const styles = {
     header: {
-        backgroundColor: "#004a8d",
+        backgroundColor: "#252628",
         color: "#fff",
         padding: "1rem 0",
-        marginBottom: "1px",
     },
     container: {
         maxWidth: "1200px",
@@ -40,6 +40,10 @@ const styles = {
         fontSize: "1.5rem",
     },
     button: {
+        display: "flex",
+        alignItems: "center",
+        gap: "8px",
+        width: "100%",
         backgroundColor: "#FF7F00",
         color: "#fff",
         border: "none",

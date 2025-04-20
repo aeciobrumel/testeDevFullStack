@@ -6,7 +6,7 @@
     @csrf
     <div class="login-form-root">
 
-    <h1>Faça seu login</h1>
+    <h1 class="title-form">Faça seu login</h1>
         <div id="react-input-cpf"
             data-props="{!! htmlspecialchars(json_encode([
                 'name' => 'cpf',

@@ -23,16 +23,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1a1a1a;
+    background: linear-gradient(to bottom right, #6a6a6a, #070708);
     flex: 1;
 }
 
 .form-container {
-    background: linear-gradient(to bottom right, #f7931e, #f15a24);
+    background: linear-gradient(to bottom right, #ffaa32, #f15a24);
     padding: 2rem;
     border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-    max-width: 600px;
+    box-shadow: 0 50px 400px rgba(232, 232, 232, 0.5);
+    max-width: 300px;
     width: 100%;
     color: white;
 }
@@ -85,4 +85,10 @@ select {
     justify-content: center;
     align-items: center;
     gap: 1rem;
+}
+.title-form {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
 }

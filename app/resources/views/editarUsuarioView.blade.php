@@ -3,10 +3,11 @@
 
 @section('content')
 <div class="form-wrapper">
+    
 <form class="form-container" method="POST" action="{{ route('atualizar.usuario', ['id' => $usuario->id]) }}">
     @csrf
     @method('PUT')
-
+    <h1 class="title-form">Editar Usuário</h1>
     <div id="react-input-nome"
          data-props='{!! htmlspecialchars(json_encode([
            "label" => "Nome: ",
@@ -34,7 +35,7 @@
              "placeholder" => $usuario->email,
              "value" => $usuario->email,
              "type" => "email"
-         ]), ENT_QUOTES, "UTF-8") !!}'>a
+         ]), ENT_QUOTES, "UTF-8") !!}'>
     </div>
 
     <select class="select" name="permissao" required >
@@ -45,7 +46,7 @@
     <div class="container-buttons">
                 <div id="react-button-salvar"
                     data-props='{!! htmlspecialchars(json_encode([
-                        "children" => "Salvar Alterações",
+                        "children" => "Salvar ",
                         "fullWidth" => false,
                         "color" => "#424242",
                     ]), ENT_QUOTES, "UTF-8") !!}'>
@@ -58,7 +59,9 @@
         "fullWidth" => false,
         "onClickUrl" => route("listar_page")
     ]), ENT_QUOTES, "UTF-8") !!}'>
-</div>
+            
+
+    </div>
     </div>
 
 </form>

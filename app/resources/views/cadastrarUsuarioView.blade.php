@@ -5,6 +5,7 @@
 <div class="form-wrapper">
 <form class="form-container" method="POST" action="{{ route('registrar.usuario') }}">
         @csrf
+        <h1 class="title-form">Cadastrar Usuário</h1>
 
         <div id="react-input-nome"
             data-props="{!! htmlspecialchars(json_encode([
@@ -60,7 +61,7 @@
         @csrf
         <div id="react-button-cadastrar-usuario"
             data-props='{
-            "children":"cancelar",
+            "children":"Cancelar",
             "color":"#db4949",
             "fullWidth":false,
             "onClickUrl":"listar"
