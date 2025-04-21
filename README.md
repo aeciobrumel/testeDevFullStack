@@ -34,8 +34,8 @@ Este projeto combina Laravel 12, React (com Vite), banco de dados SQLite e Docke
 ### Passos
 
 ```bash
-git clone https://github.com/aeciobrumel/testeDevFullStack
-cd testeDevFullStack
+git clone https://github.com/seu-usuario/seu-repo.git
+cd seu-repo
 docker-compose up --build
 ```
 
