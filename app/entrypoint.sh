@@ -22,8 +22,9 @@ echo "Rodando comandos do Laravel..."
 php artisan config:cache
 php artisan storage:link || true
 
-echo "Rodando migrations e seeders..."
-php artisan migrate:fresh --seed
+echo "Rodando migrations e seeders com --force..."
+php artisan migrate:fresh --seed --force
+
 
 echo "Iniciando servidor Laravel..."
 php artisan serve --host=0.0.0.0 --port=8000
