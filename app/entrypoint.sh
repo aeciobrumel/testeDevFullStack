@@ -1,9 +1,12 @@
 #!/bin/bash
 
+set -e
+
 echo "Aguardando o Node/Vite iniciar..."
 sleep 6
 
-composer install --no-interaction --prefer-dist
+echo "Instalando dependências PHP..."
+composer install --no-interaction --prefer-dist --no-progress
 
 # Garante que o banco SQLite exista
 DB_PATH="/var/www/database/database.sqlite"
@@ -15,9 +18,12 @@ if [ ! -f "$DB_PATH" ]; then
     echo "Arquivo SQLite criado em $DB_PATH"
 fi
 
+echo "Rodando comandos do Laravel..."
 php artisan config:cache
 php artisan storage:link || true
 
+echo "Rodando migrations e seeders..."
 php artisan migrate:fresh --seed
 
+echo "Iniciando servidor Laravel..."
 php artisan serve --host=0.0.0.0 --port=8000
