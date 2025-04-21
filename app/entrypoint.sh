@@ -5,6 +5,16 @@ sleep 5
 
 composer install --no-interaction --prefer-dist
 
+# Garante que o banco SQLite exista
+DB_PATH="/var/www/database/database.sqlite"
+
+if [ ! -f "$DB_PATH" ]; then
+    echo "Criando o arquivo SQLite..."
+    mkdir -p /var/www/database
+    touch "$DB_PATH"
+    echo "Arquivo SQLite criado em $DB_PATH"
+fi
+
 php artisan config:cache
 php artisan storage:link || true
 

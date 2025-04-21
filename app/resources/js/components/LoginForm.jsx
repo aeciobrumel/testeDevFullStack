@@ -58,7 +58,7 @@ const LoginForm = () => {
                 />
 
                 <div style={{ marginTop: "1.5rem" }}>
-                    <Button type="submit" fullWidth color="#6f42c1">
+                    <Button type="submit" fullWidth color="#8062b7">
                         Entrar
                     </Button>
                 </div>

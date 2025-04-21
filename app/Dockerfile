@@ -1,0 +1,26 @@
+FROM php:8.2-cli
+
+WORKDIR /var/www
+
+# Instala dependências do sistema
+RUN apt-get update && apt-get install -y \
+    unzip \
+    curl \
+    libzip-dev \
+    zip \
+    sqlite3 \
+    libsqlite3-dev \
+    && docker-php-ext-install pdo pdo_sqlite zip
+
+# Instala o Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Copia os arquivos do projeto
+COPY . /var/www
+
+# Instala dependências do Laravel (vai rodar também no entrypoint, mas incluímos aqui por segurança)
+RUN composer install --no-interaction --no-scripts --prefer-dist
+
+# Garante permissões corretas
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache

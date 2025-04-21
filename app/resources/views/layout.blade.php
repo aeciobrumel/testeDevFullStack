@@ -5,37 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @viteReactRefresh
+    @vite(['resources/js/app.jsx'])
 
-    <title>
-        
-    @yield('title', 'Aplicação de Login')
-    </title>
-    
+    <title>@yield('title', 'Aplicação de Login')</title>
 </head>
 <body>
     <header>
-    @csrf
-    
-            <div id="react-header"
-                data-props='@json([
-                    "isAuthenticated" => Auth::check(),
-                    "logoutUrl" => route("logout"),
-                    "csrfToken" => csrf_token()
-                ])'>
-            </div>
-
-
-
+        <div id="react-header"
+            data-props='@json([
+                "isAuthenticated" => Auth::check(),
+                "logoutUrl" => route("logout"),
+                "csrfToken" => csrf_token()
+            ])'>
+        </div>
     </header>
-    <main style="flex:1 ; display:flex;  flex-direction:column;">
+
+    <main style="flex:1; display:flex; flex-direction:column;">
         @yield('content')
     </main>
-         <div id="footer-react"></div>
 
-
-    @viteReactRefresh
-@vite(['resources/js/app.jsx'])
-
-
+    <div id="footer-react"></div>
 </body>
 </html>

@@ -7,6 +7,9 @@ import UserCardList from "./components/UserCardList";
 import Button from "./components/Button";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import UserCard from "./components/UserCard";
+import DropdownAcoes from "./components/DropdownAcoes";
+
 import "./bootstrap";
 import { createRoot } from "react-dom/client";
 import { Smiley, Heart, Horse } from "@phosphor-icons/react";
