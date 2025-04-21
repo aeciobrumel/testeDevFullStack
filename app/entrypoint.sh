@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Aguardando o Node/Vite iniciar..."
-sleep 5
+sleep 6
 
 composer install --no-interaction --prefer-dist
 
