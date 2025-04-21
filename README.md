@@ -73,13 +73,11 @@ php artisan tinker                 # Teste de dados
 - Listagem de usuários (blade e React)
 - Edição e exclusão com base em permissões
 - Componentes React reutilizáveis (formulários, botões, cartões)
-- Frontend centralizado (estilo inspirado no Senac)
 - Hot Reload com Vite
 - Banco persistente com SQLite
 
 ## 🛠️ Dicas para desenvolvimento
 
-- Use `volumes:` no `docker-compose.yml` para espelhar alterações em tempo real
 - Customize as seeds para seus próprios dados
 - Use o React dentro das views Blade com facilidade
 
