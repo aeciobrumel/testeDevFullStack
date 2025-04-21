@@ -1,7 +1,7 @@
 node_modules
+public/storage
+vendor
 npm-debug.log
 .env
 .dockerignore
-Dockerfile
-docker-compose.yml
 *.sqlite
