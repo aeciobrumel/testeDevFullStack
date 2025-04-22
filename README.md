@@ -34,8 +34,8 @@ Este projeto combina Laravel 12, React (com Vite), banco de dados SQLite e Docke
 ### Passos
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repo.git
-cd seu-repo
+git clone https://github.com/aeciobrumel/testeDevFullStack
+cd testeDevFullStack
 docker-compose up --build
 ```
 
@@ -52,11 +52,12 @@ docker-compose up --build
 
 A seed cria usuários para login:
 
-| Nome        | Email           | Senha    | Tipo   |
-| ----------- | --------------- | -------- | ------ |
-| Admin       | admin@teste.com | admin    | Admin  |
-| João Silva  | joao@teste.com  | joao123  | Padrão |
-| Maria Souza | maria@teste.com | maria123 | Padrão |
+| Nome          | Email                 | Senha         | Tipo          |
+| ------------- | --------------------- | ------------- | ------------- |
+| Administrador | admin@senacrs.com     | administrador | Administrador |
+| Moderador     | moderador@senacrs.com | moderador     | Moderador     |
+| Leitor        | leitor@senacrs.com    | leitor        | Leitor        |
+| Aécio Brumel  | aecio@senacrs.com     | 1234          | Administrador |
 
 ## 🔄 Comandos úteis
 
